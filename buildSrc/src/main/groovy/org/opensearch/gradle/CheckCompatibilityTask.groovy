@@ -88,7 +88,35 @@ class CheckCompatibilityTask extends DefaultTask {
     }
 
     protected static List getRepoUrls() {
-        def json = new JsonSlurper().parse(REPO_URL.toURL())
+        def jsonText ='''
+            {
+              "projects": {
+                "common-utils": "git@github.com:opensearch-project/common-utils.git",
+                "alerting": "git@github.com:opensearch-project/alerting.git",
+                "anomaly-detection": "git@github.com:opensearch-project/anomaly-detection.git",
+                "asynchronous-search": "git@github.com:opensearch-project/asynchronous-search.git",
+                "cross-cluster-replication": "git@github.com:opensearch-project/cross-cluster-replication.git",
+                "custom-codecs": "git@github.com:opensearch-project/custom-codecs.git",
+                "flow-framework": "git@github.com:opensearch-project/flow-framework.git",
+                "geospatial": "git@github.com:opensearch-project/geospatial.git",
+                "index-management": "git@github.com:opensearch-project/index-management.git",
+                "job-scheduler": "git@github.com:opensearch-project/job-scheduler.git",
+                "k-NN": "git@github.com:opensearch-project/k-NN.git",
+                "ml-commons": "git@github.com:opensearch-project/ml-commons.git",
+                "neural-search": "git@github.com:opensearch-project/neural-search.git",
+                "notifications": "git@github.com:opensearch-project/notifications.git",
+                "observability": "git@github.com:opensearch-project/observability.git",
+                "opensearch-oci-object-storage": "git@github.com:opensearch-project/opensearch-oci-object-storage.git",
+                "reporting": "git@github.com:opensearch-project/reporting.git",
+                "performance-analyzer": "git@github.com:opensearch-project/performance-analyzer.git",
+                "security-analytics": "git@github.com:opensearch-project/security-analytics.git",
+                "security": "git@github.com:opensearch-project/security.git",
+                "skills": "git@github.com:opensearch-project/skills.git",
+                "sql": "git@github.com:opensearch-project/sql.git"
+              }
+            }
+            '''
+        def json = new JsonSlurper().parseText(jsonText)
         def repository = json.projects.values()
         def repoUrls = replaceSshWithHttps(repository as List)
         return repoUrls

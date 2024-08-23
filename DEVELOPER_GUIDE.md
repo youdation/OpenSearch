@@ -109,7 +109,7 @@ bundled_jdk = 17.0.2+8
 
 #### Custom Runtime JDK
 
-Other kind of test tasks (integration, cluster, etc.) use the same runtime as `JAVA_HOME`. However, the build also supports compiling with one version of JDK, and testing on a different version. To do this, set `RUNTIME_JAVA_HOME` pointing to the Java home of another JDK installation, e.g. `RUNTIME_JAVA_HOME=/usr/lib/jvm/jdk-14`. Alternatively, the runtime JDK version could be provided as the command line argument, using combination of `runtime.java=<major JDK version>` property and `JAVA<major JDK version>_HOME` environment variable, for example `./gradlew -Druntime.java=17 ...` (in this case, the tooling expects `JAVA17_HOME` environment variable to be set).
+Other kind of test tasks (integration, cluster, etc.) use the same runtime as `JAVA_HOME`. However, the build also supports compiling with one version of JDK, and testing on a different version. To do this, set `RUNTIME_JAVA_HOME` pointing to the Java home of another JDK installation, e.g. `RUNTIME_JAVA_HOME=/usr/lib/jvm/jdk-14`. Alternatively, the runtime JDK version could be provided as the command line argument, using combination of `runtime.java=<major JDK version>` property and `JAVA<major JDK version>_HOME` environment variable, for example `./gradlew -Druntime.java=11 ...` (in this case, the tooling expects `JAVA17_HOME` environment variable to be set).
 
 #### Windows
 
